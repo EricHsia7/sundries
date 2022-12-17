@@ -138,7 +138,7 @@ function similarColor(hex, similarity) {
  return [color_a_hex, color_b_hex]
 }
 
-function colorScale(hex, amount, similarity) {
+function similarColorGroup(hex, amount, similarity) {
  var amount_n = amount
  if (amount <= 0) {
   amount_n = 2
@@ -161,5 +161,13 @@ function colorScale(hex, amount, similarity) {
  if (amount_n - amount > 0) {
   list = list.slice(0, amount)
  }
+ list = list.sort(function (a, b) {
+  var a_rgb = hex2rgb(a)
+  var b_rgb = hex2rgb(b)
+  var a_hsv = rgb2hsv(a_rgb.r, a_rgb.g, a_rgb.b)
+  var b_hsv = rgb2hsv(b_rgb.r, b_rgb.g, b_rgb.b)
+
+  return a_hsv.h - b_hsv.h
+ })
  return list
 }
