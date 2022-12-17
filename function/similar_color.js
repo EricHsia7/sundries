@@ -98,8 +98,8 @@ function similarColor(hex, similarity) {
   color_b_h = source_color_hsv.h + fl(rd() * similarity)
  }
  if (source_color_hsv.h > similarity && source_color_hsv.h < (360 - similarity)) {
-  color_a_h = source_color_hsv.h + fl((0 - uj) + rd() * (similarity * 2))
-  color_b_h = source_color_hsv.h + fl((0 - uj) + rd() * (similarity * 2))
+  color_a_h = source_color_hsv.h + fl((0 - similarity) + rd() * (similarity * 2))
+  color_b_h = source_color_hsv.h + fl((0 - similarity) + rd() * (similarity * 2))
  }
  if (source_color_hsv.h > (360 - similarity)) {
   color_a_h = source_color_hsv.h - fl(rd() * similarity)
@@ -139,7 +139,7 @@ function similarColor(hex, similarity) {
 }
 
 function colorScale(hex, amount, similarity) {
- var amount_n
+ var amount_n = amount
  if (amount <= 0) {
   amount_n = 2
  }
@@ -156,7 +156,7 @@ function colorScale(hex, amount, similarity) {
   else {
    source_color = list[list.length - 1]
   }
-  list = list.concat(similarColor(source_color), similarity)
+  list = list.concat(similarColor(source_color,similarity))
  }
  return list
 }
