@@ -154,7 +154,7 @@ function similarColorGroup(hex, amount, similarity) {
    source_color = hex
   }
   else {
-   source_color = list[list.length - 1]
+   source_color = list[fl((list.length - 1) * rd())]
   }
   list = list.concat(similarColor(source_color, similarity))
  }
