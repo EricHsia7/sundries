@@ -156,7 +156,10 @@ function colorScale(hex, amount, similarity) {
   else {
    source_color = list[list.length - 1]
   }
-  list = list.concat(similarColor(source_color,similarity))
+  list = list.concat(similarColor(source_color, similarity))
+ }
+ if (amount_n - amount > 0) {
+  list = list.slice(0, amount)
  }
  return list
 }
